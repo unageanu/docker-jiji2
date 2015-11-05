@@ -39,12 +39,15 @@ RUN mkdir -p $APP_DIR \
  && bundle install
 
 RUN mkdir -p /var/run/jiji
-RUN ruby -rsecurerandom -e "puts SecureRandom.hex 64" > $APP_DIR/secret
+RUN ruby -rsecurerandom -e "print SecureRandom.hex 64" > $APP_DIR/secret
+
+RUN chown -R root:root $APP_DIR/secret
+RUN chmod -R 600 $APP_DIR/secret
 
 ENV PUMA_DAEMONIZE true
 ENV PUMA_APPLICATION_PATH $APP_DIR/jiji2
 ENV PORT 80
-ENV SECRET `cat $APP_DIR/secret`
+ENV SECRET_FILE_PATH $APP_DIR/secret
 
 
 # install monit configurations
