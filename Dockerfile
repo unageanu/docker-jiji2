@@ -1,6 +1,7 @@
 FROM centos:centos7
 MAINTAINER unageanu <masaya.yamauchi@gmail.com>
 
+
 COPY assets/yum.repos.d/*.repo /etc/yum.repos.d/
 
 RUN yum -y update && yum clean all \
@@ -8,7 +9,7 @@ RUN yum -y update && yum clean all \
  && yum -y install mongodb-org monit rbenv git \
     make which wget tar gcc patch readline-devel \
     zlib-devel libyaml-devel libffi-devel openssl-devel \
-    gdbm-devel ncurses-devel libxml-devel ImageMagick \
+    gdbm-devel ncurses-devel libxml-devel ImageMagick ntp \
  && yum clean all
 
 
@@ -65,6 +66,14 @@ RUN chown -R root:root /etc/mongod.conf
 RUN chmod -R 600 /etc/mongod.conf
 
 VOLUME /data
+
+
+# Time Zone
+RUN echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
+
+RUN rm -f /etc/localtime
+RUN ln -fs /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 
 # mongodb
 EXPOSE 27017
