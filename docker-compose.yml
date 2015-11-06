@@ -1,0 +1,13 @@
+jiji:
+  container_name: jiji_jiji
+  build: ./build/jiji
+  links:
+    - mongodb
+  ports:
+    - "8080:8080"
+
+mongodb:
+  container_name: jiji_mongodb
+  image: mongo:3.0.7
+  ports:
+    - "27017:27017"
