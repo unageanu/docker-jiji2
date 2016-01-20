@@ -1,4 +1,4 @@
-# docker-jiji2 (ALPHA)
+# docker-jiji2 (BETA)
 
 Make a jiji application environment using the Docker.
 
