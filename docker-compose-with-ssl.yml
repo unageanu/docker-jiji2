@@ -1,0 +1,22 @@
+jiji:
+  container_name: jiji_jiji
+  build: ./build/jiji
+  links:
+    - mongodb
+
+mongodb:
+  container_name: jiji_mongodb
+  image: mongo:3.0.7
+  ports:
+    - "27018:27017"
+
+nginx:
+  container_name: jiji_nginx
+  build: ./build/nginx
+  links:
+    - jiji
+  ports:
+    - "8443:443"
+  volumes:
+    - path/to/ssl.crt:/etc/nginx/cert/ssl.crt:ro
+    - path/to/ssl.key:/etc/nginx/cert/ssl.key:ro
