@@ -10,4 +10,4 @@ mongodb:
   container_name: jiji_mongodb
   image: mongo:3.0.7
   ports:
-    - "27017:27017"
+    - "27018:27017"
