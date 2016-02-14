@@ -3,6 +3,10 @@ jiji:
   build: ./build/jiji
   links:
     - mongodb
+  ports:
+    # Jijiのポート番号
+    # 必要に応じて変更してください。
+    - "8080:8080"
 
 mongodb:
   container_name: jiji_mongodb
@@ -17,20 +21,3 @@ mongodb:
     # コメントアウトしてパスを設定することで、ホストマシンの任意のディレクトリに変更することができます。
     # './' で始めることで、docker-compose.ymlからの相対パスで指定可能です。
     # - ./path/to/data/dir:/data/db
-
-nginx:
-  container_name: jiji_nginx
-  build: ./build/nginx
-  links:
-    - jiji
-  ports:
-    # Jijiのポート番号
-    # 必要に応じて変更してください。
-    - "8443:443"
-  volumes:
-    # SSL証明書のパス
-    # './path/to/server.crt' にサーバー証明書、
-    # './path/to/server.key' に秘密鍵を指定します。
-    # './' で始めることで、docker-compose.ymlからの相対パスで指定可能です。
-    - ./path/to/server.crt:/etc/nginx/cert/ssl.crt:ro
-    - ./path/to/server.key:/etc/nginx/cert/ssl.key:ro
