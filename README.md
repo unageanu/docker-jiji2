@@ -18,9 +18,10 @@ Make a jiji application environment using the Docker.
   $ sudo docker-compose up -d
   $ sudo docker ps
   CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                      NAMES
-  0814bcf5680c        dockerjiji2_jiji    "pumactl -S /var/run/"   About a minute ago   Up 3 seconds        0.0.0.0:8080->8080/tcp     jiji_jiji
-  123a3904489d        mongo:3.0.7         "/entrypoint.sh mongo"   5 minutes ago        Up 4 seconds        0.0.0.0:27017->27017/tcp   jiji_mongodb
+  6f64048c64d1        dockerjiji2_nginx   "nginx -g 'daemon off"   22 seconds ago      Up 18 seconds           80/tcp, 0.0.0.0:8443->443/tcp   jiji_nginx
+  acc18e111906        dockerjiji2_jiji    "pumactl -S /var/run/"   25 seconds ago      Up 22 seconds           8080/tcp                        jiji_jiji
+  407fa85328b4        mongo:3.0.7         "/entrypoint.sh mongo"   27 seconds ago      Up 25 seconds           0.0.0.0:27018->27017/tcp        jiji_mongodb
 ```
 
-- port 8080  .. jiji
-- port 27017 .. mongodb
+- port 8443  .. jiji
+- port 27018 .. mongodb
