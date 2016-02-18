@@ -14,19 +14,14 @@ ENV APP_DIR /app
 
 RUN mkdir -p $APP_DIR \
  && cd $APP_DIR \
- && git clone https://github.com/unageanu/jiji2.git \
+ && git clone -b develop https://github.com/unageanu/jiji2.git \
  && cd ./jiji2 \
  && bundle install
 
 RUN mkdir -p /var/run/jiji
-RUN ruby -rsecurerandom -e "print SecureRandom.hex 64" > $APP_DIR/secret
-
-RUN chown -R root:root $APP_DIR/secret
-RUN chmod -R 600 $APP_DIR/secret
 
 ENV PUMA_APPLICATION_PATH $APP_DIR/jiji2
 ENV PORT 8080
-ENV SECRET_FILE_PATH $APP_DIR/secret
 ENV MONGOLAB_URI=mongodb://mongodb:27017/jiji
 
 EXPOSE 8080

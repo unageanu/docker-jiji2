@@ -3,6 +3,11 @@ jiji:
   build: ./build/jiji
   links:
     - mongodb
+  environment:
+    # サーバー内部で秘匿データの暗号化に使うキー
+    # 必ず変更して使用してください。
+    # UIから入力を求められることはないので、任意の長い文字列を使用するればOKです。
+    USER_SECRET: e4cceb3791f2cce9ef6e4f64d2428ad19bdb
   ports:
     # Jijiのポート番号
     # 必要に応じて変更してください。
