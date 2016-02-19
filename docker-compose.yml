@@ -1,12 +1,12 @@
 jiji:
   container_name: jiji_jiji
-  build: ./build/jiji
+  image: unageanu/jiji:dev
   links:
     - mongodb
   environment:
     # サーバー内部で秘匿データの暗号化に使うキー
     # 必ず変更して使用してください。
-    # UIから入力を求められることはないので、任意の長い文字列を使用するればOKです。
+    # UIから入力を求められることはないので、任意の長い文字列を使用すればOKです。
     USER_SECRET: e4cceb3791f2cce9ef6e4f64d2428ad19bdb
 
 mongodb:
@@ -25,7 +25,7 @@ mongodb:
 
 nginx:
   container_name: jiji_nginx
-  build: ./build/nginx
+  image: unageanu/jiji-nginx:dev
   links:
     - jiji
   ports:
