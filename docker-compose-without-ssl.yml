@@ -1,6 +1,6 @@
 jiji:
   container_name: jiji_jiji
-  image: unageanu/jiji:dev
+  image: unageanu/jiji:latest
   links:
     - mongodb
   environment:
