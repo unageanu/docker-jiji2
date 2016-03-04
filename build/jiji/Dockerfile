@@ -26,4 +26,4 @@ ENV MONGOLAB_URI=mongodb://mongodb:27017/jiji
 
 EXPOSE 8080
 
-CMD [ "pumactl", "-S", "/var/run/jiji/jiji.status", "-F", "/app/jiji2/config/puma.rb", "start" ]
+CMD [ "puma", "-C", "/app/jiji2/config/puma.rb" ]
