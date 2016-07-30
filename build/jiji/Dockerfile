@@ -14,7 +14,7 @@ ENV APP_DIR /app
 
 RUN mkdir -p $APP_DIR \
  && cd $APP_DIR \
- && git clone -b v1.1.0 https://github.com/unageanu/jiji2.git \
+ && git clone -b v1.1.1 https://github.com/unageanu/jiji2.git \
  && cd ./jiji2 \
  && bundle install
 
