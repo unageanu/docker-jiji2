@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.3.8
 MAINTAINER unageanu <masaya.yamauchi@gmail.com>
 
 # Time Zone
