@@ -46,7 +46,7 @@ end
 def check_version(src, new_version)
   current = extract_version(src)
   new_version = Gem::Version.create(new_version)
-  if current >= new_version
+  if current > new_version
     raise "illegal version. new=#{new_version} current=#{current}"
   end
 end
